@@ -1,0 +1,78 @@
+<!-- 继承自 login.html -->
+{% extends 'login.html' %}
+{% load static %}
+<!-- 覆盖父模板中的同名 block -->
+{% block title %}
+    天天果园-注册
+{% endblock %}
+
+{% block topic %}
+    注册会员
+{% endblock %}
+
+{% block anchor %}
+    <a href="/login">会员登录</a>
+{% endblock %}
+
+{% block form %}
+    <form id="formReg" action="/register/" method="post">
+        {% csrf_token %}
+        <!-- 1.手机号 -->
+        <div class="form-line">
+            <div>
+                <input type="text" name="uphone" class="form-control">
+                <p id="uphone-show">{{errMsg}}</p>
+            </div>
+            <p>手机号</p>
+        </div>
+        <!-- 2.密码-->
+        <div class="form-line">
+            <div>
+                <input type="password" id='upwd' name="upwd" class="form-control">
+            </div>
+            <p>密码</p>
+        </div>
+        <!-- 3.确认密码-->
+        <div class="form-line">
+            <div>
+                <input type="password" id="cpwd"  class="form-control">
+            </div>
+            <p>确认密码</p>
+        </div>
+        <!-- 4.用户名-->
+        <div class="form-line">
+            <div>
+                <input type="text" name="uname" class="form-control" value='{{uname}}'>
+            </div>
+            <p>用户名</p>
+        </div>
+        <!-- 5.邮箱-->
+        <div class="form-line">
+            <div>
+                <input type="text" name="uemail" class="form-control" value="{{uemail}}">
+            </div>
+            <p>邮箱</p>
+        </div>
+        <!-- 6.注册&会员登录 -->
+        <div class="form-line">
+            <div>
+                <a href="/login" class="goReg">会员登录</a>
+                <input type="submit" value="注册" class="btnLogin">
+            </div>
+        </div>
+    </form>
+{% endblock %}
+
+{% block style %}
+    <style>
+        #login{
+            margin-top:40px;
+        }
+    </style>
+{% endblock %}
+
+{% block js %}
+    <script src="/static/js/jquery-1.11.3.js"></script>
+
+    <script src="/static/js/register.js"></script>
+{% endblock %}
